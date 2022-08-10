@@ -384,6 +384,7 @@ CpuCTC<ProbT>::cost_and_grad(const ProbT* const activations,
                              const int* const flat_labels,
                              const int* const label_lengths,
                              const int* const input_lengths) {
+    printf("===cost_and_grad\n");
     if (activations == nullptr ||
         grads == nullptr ||
         costs == nullptr ||
@@ -443,6 +444,7 @@ ctcStatus_t CpuCTC<ProbT>::score_forward(const ProbT* const activations,
                                          const int* const flat_labels,
                                          const int* const label_lengths,
                                          const int* const input_lengths) {
+    printf("===forward\n");
     if (activations == nullptr ||
         costs == nullptr ||
         flat_labels == nullptr ||

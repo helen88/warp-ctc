@@ -61,17 +61,15 @@ ctcStatus_t compute_ctc_loss(const float* const activations,
         CpuCTC<float> ctc(alphabet_size, minibatch, workspace, options.num_threads,
                           options.blank_label);
 
-        if (gradients != NULL){
-	    printf("===ctc.cost_and_grad\n");
+        if (gradients != NULL)
             return ctc.cost_and_grad(activations, gradients,
                                      costs,
                                      flat_labels, label_lengths,
                                      input_lengths);
-	} else{
-	    printf("===ctc.score_forward\n");
+	else
             return ctc.score_forward(activations, costs, flat_labels,
                                      label_lengths, input_lengths);
-	}
+	
     } else if (options.loc == CTC_GPU) {
 #if (defined(__HIPCC__) || defined(__CUDACC__))
         GpuCTC<float> ctc(alphabet_size, minibatch, workspace, options.stream,
