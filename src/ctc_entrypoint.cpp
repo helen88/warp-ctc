@@ -67,8 +67,7 @@ ctcStatus_t compute_ctc_loss(const float* const activations,
                                      costs,
                                      flat_labels, label_lengths,
                                      input_lengths);
-	}
-        else{
+	} else{
 	    printf("===ctc.score_forward\n");
             return ctc.score_forward(activations, costs, flat_labels,
                                      label_lengths, input_lengths);
