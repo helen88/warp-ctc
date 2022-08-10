@@ -62,11 +62,13 @@ ctcStatus_t compute_ctc_loss(const float* const activations,
                           options.blank_label);
 
         if (gradients != NULL)
+	    printf("===ctc.cost_and_grad\n");
             return ctc.cost_and_grad(activations, gradients,
                                      costs,
                                      flat_labels, label_lengths,
                                      input_lengths);
         else
+	    printf("===ctc.score_forward\n");
             return ctc.score_forward(activations, costs, flat_labels,
                                      label_lengths, input_lengths);
     } else if (options.loc == CTC_GPU) {
