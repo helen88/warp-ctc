@@ -218,6 +218,7 @@ CpuCTC<ProbT>::cost_and_grad_kernel(ProbT *grad, const ProbT* const probs,
 
     ProbT diff = std::abs(llForward - llBackward);
     if (diff > ctc_helper::threshold) {
+        printf("===in diff compare\n");
         over_threshold = true;
     }
 
