@@ -231,6 +231,9 @@ ProbT CpuCTC<ProbT>::compute_alphas(const ProbT* probs, int repeats, int S, int 
                                     const int* const s_inc,
                                     const int* const labels,
                                     ProbT* alphas) {
+
+    printf("===compute_alphas\n");
+    printf("===repeats: %d, S: %d, T: %d\n",repeats, S, T);
     int start =  (((S /2) + repeats - T) < 0) ? 0 : 1,
             end = S > 1 ? 2 : 1;
 
@@ -285,6 +288,8 @@ ProbT CpuCTC<ProbT>::compute_betas_and_grad(ProbT* grad, const ProbT* const prob
                                             ProbT* alphas,
                                             ProbT* betas,
                                             ProbT* output) {
+
+    printf("===compute_betas_and_grad\n");
     int start = S > 1 ? (S - 2) : 0,
             end = (T > (S / 2) + repeats) ? S : S-1;
 
@@ -384,7 +389,7 @@ CpuCTC<ProbT>::cost_and_grad(const ProbT* const activations,
                              const int* const flat_labels,
                              const int* const label_lengths,
                              const int* const input_lengths) {
-    printf("===cost_and_grad\n");
+    //printf("===cost_and_grad\n");//here
     if (activations == nullptr ||
         grads == nullptr ||
         costs == nullptr ||
@@ -444,7 +449,7 @@ ctcStatus_t CpuCTC<ProbT>::score_forward(const ProbT* const activations,
                                          const int* const flat_labels,
                                          const int* const label_lengths,
                                          const int* const input_lengths) {
-    printf("===forward\n");
+    //printf("===forward\n");
     if (activations == nullptr ||
         costs == nullptr ||
         flat_labels == nullptr ||
